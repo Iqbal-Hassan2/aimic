@@ -27,14 +27,14 @@
   /**
    * Easy on scroll event listener
    */
-  const onscroll = (el, listener) => {
+  const onScroll = (el, listener) => {
     el.addEventListener("scroll", listener);
   };
 
   /**
    * Navbar links active state on scroll
    */
-  let navbarlinks = select("#navbar .scrollto", true);
+  let navbarlinks = select("#navbar .scrollTo", true);
   const navbarlinksActive = () => {
     let position = window.scrollY + 200;
     navbarlinks.forEach((navbarlink) => {
@@ -52,12 +52,12 @@
     });
   };
   window.addEventListener("load", navbarlinksActive);
-  onscroll(document, navbarlinksActive);
+  onScroll(document, navbarlinksActive);
 
   /**
    * Scrolls to an element with header offset
    */
-  const scrollto = (el) => {
+  const scrollTo = (el) => {
     let header = select("#header");
     let offset = header.offsetHeight;
 
@@ -85,23 +85,23 @@
       }
     };
     window.addEventListener("load", headerScrolled);
-    onscroll(document, headerScrolled);
+    onScroll(document, headerScrolled);
   }
 
   /**
    * Back to top button
    */
-  let backtotop = select(".back-to-top");
-  if (backtotop) {
-    const toggleBacktotop = () => {
+  let backToTop = select(".back-to-top");
+  if (backToTop) {
+    const toggleBackToTop = () => {
       if (window.scrollY > 100) {
-        backtotop.classList.add("active");
+        backToTop.classList.add("active");
       } else {
-        backtotop.classList.remove("active");
+        backToTop.classList.remove("active");
       }
     };
-    window.addEventListener("load", toggleBacktotop);
-    onscroll(document, toggleBacktotop);
+    window.addEventListener("load", toggleBackToTop);
+    onScroll(document, toggleBackToTop);
   }
 
   /**
@@ -133,7 +133,7 @@
    */
   on(
     "click",
-    ".scrollto",
+    ".scrollTo",
     function (e) {
       if (select(this.hash)) {
         e.preventDefault();
@@ -145,7 +145,7 @@
           navbarToggle.classList.toggle("bi-list");
           navbarToggle.classList.toggle("bi-x");
         }
-        scrollto(this.hash);
+        scrollTo(this.hash);
       }
     },
     true
@@ -157,7 +157,7 @@
   window.addEventListener("load", () => {
     if (window.location.hash) {
       if (select(window.location.hash)) {
-        scrollto(window.location.hash);
+        scrollTo(window.location.hash);
       }
     }
   });
